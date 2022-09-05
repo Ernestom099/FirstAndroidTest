@@ -3,6 +3,11 @@ package com.example.myapplication
 class Assertions {
 
     private val user = User("Luis", 25)
+    private var location = "US"
+
+    fun setLocation(location: String) {
+        this.location = location
+    }
 
     fun getLuckyNumbers(): Array<Int> {
         return arrayOf(2, 7)
@@ -28,6 +33,8 @@ class Assertions {
         if (!user.isHuman) {
             return true
         }
-        return user.age >= 18
+
+        return if (location == "US") user.age >= 21
+        else user.age >= 18
     }
 }
